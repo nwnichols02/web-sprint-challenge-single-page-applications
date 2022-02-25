@@ -1,8 +1,8 @@
 import React from "react";
 
 export default function PizzaForm(props) {
-  const { values, change, submit, errors, disabled } = props;
-
+  const { values, change, submit, errors } = props;
+//removed diabled from above
   const onSubmit = (evt) => {
     evt.preventDefault();
     submit();
@@ -13,6 +13,10 @@ export default function PizzaForm(props) {
     const valueToUse = type === "checkbox" ? checked : value;
     change(name, valueToUse);
   };
+
+  const isDisabled = () => {
+    return !values.name.trim() || !values.size || !values.special.trim()
+  }
 
   return (
     <div className="form-container">
@@ -53,13 +57,13 @@ export default function PizzaForm(props) {
             Pepperoni:
             <input
               type="checkbox"
-              name="peperoni"
+              name="pepperoni"
               onChange={onChange}
               value={values.pepperoni}
             />
           </label>
           <label className="bacon">
-            bacon:
+            Bacon:
             <input
               type="checkbox"
               name="bacon"
@@ -68,7 +72,7 @@ export default function PizzaForm(props) {
             />
           </label>
           <label className="mushrooms">
-            =Mushrooms:
+            Mushrooms:
             <input
               type="checkbox"
               name="mushrooms"
@@ -119,7 +123,7 @@ export default function PizzaForm(props) {
         </div>
         <div>
           <label>
-            Special:
+            Special Instructions:
             <input
               id="special-text"
               name="special"
@@ -129,7 +133,7 @@ export default function PizzaForm(props) {
           </label>
         </div>
         <div>
-          <button id="order-button" disabled={disabled}>
+          <button id="order-button" disabled={isDisabled()}>
             Add to Order
           </button>
         </div>

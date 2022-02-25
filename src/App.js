@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
+//removed useEffect for disabled 
 import { Route, Switch } from "react-router-dom";
 import Homepage from "./Homepage";
 import Form from './Form';
@@ -30,15 +31,19 @@ const App = () => {
   const [orders, setOrders] = useState([]);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
-  const [disabled, setDisabled] = useState(true);
+  // const [disabled, setDisabled] = useState(true);
 
   const postOrder = (newOrder) => {
     axios.post(`https://reqres.in/api/orders`, newOrder) 
     .then(res => {
-      setOrders([res.data, ...orders])
+      //...orders?
+      setOrders([res.data, orders])
       setFormValues(initialFormValues)
     })
-    .catch(err => console.err(err))
+    .catch(err => {
+      console.error(err)
+      setFormValues(initialFormValues)
+    })
     // do i need to catch form values
   } 
 
@@ -56,22 +61,23 @@ const App = () => {
 
   const formSubmit = () => {
     const newOrder = {
-      name: formValues.name,
+      name: formValues.name.trim(),
       size: formValues.size,
       pepperoni: formValues.pepperoni,
       bacon: formValues.bacon,
       mushrooms: formValues.mushrooms,
       artichoke: formValues.artichoke,
       pineapple: formValues.pineapple,
-      instructions: formValues.instructions,
-      special: formValues.special,
+      instructions: formValues.instructions.trim(),
+      special: formValues.special.trim(),
     }
     postOrder(newOrder)
   }
 
-  useEffect(()=>{
-    schema.isValid(formValues).then(valid=> setDisabled(!valid))
-  }, [formValues]) 
+  // useEffect(()=>{
+  //   schema.isValid(formValues)
+  //   .then(valid=> setDisabled(!valid))
+  // }, [formValues]) 
 
 
   return(
@@ -92,7 +98,7 @@ const App = () => {
       values={formValues}
       change={inputChange}
       submit={formSubmit}
-      disabled={disabled}
+      // disabled={disabled}
       errors={formErrors}
       />
     </Route>
