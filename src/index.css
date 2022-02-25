@@ -5,9 +5,131 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: white;
+  color:#011627;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h2 {
+  color:#011627;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin: 3%;
+  background-color: #63768d;
+  border-radius: 25px;
+  
+}
+
+.links{
+  display: flex;
+  justify-content: center;
+  margin: 2%;
+}
+
+.form-container{
+  background-color: #e71d36;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+
+#pizza-form{
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  height: 170vh;
+}
+
+.build-pizza-title{
+  display: flex;
+  justify-content: center;
+  border-radius: 25px;
+}
+
+.build-pizza-title h3 {
+  display: flex;
+  justify-content: center;
+  background-color: #63768d;
+  border-radius: 25px;
+  width: 30%;
+
+}
+
+h3{
+  display: flex;
+  justify-content: center;
+  background-color: #63768d;
+  border-radius: 25px;
+  width: 30%;
+}
+
+#size-dropdown{
+  margin-left: 8%;
+}
+
+.toppings label{
+  margin: 3%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.pepperoni{
+  margin: 3%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.bacon{
+  margin: 3%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.mushrooms{
+  margin: 3%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.artichoke{
+  margin: 3%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.pineapple{
+  margin: 3%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#name-input{
+  margin: 3%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#instructions{
+  margin: 3%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#special-text{
+  margin: 3%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#order-button{
+  margin: 5%;
+  display: flex;
+  justify-content: center;
 }
